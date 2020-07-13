@@ -7,14 +7,16 @@ export default function BooksList({ books }) {
         <tr>
           <th>Title</th>
           <th>Author</th>
+          <th>Year</th>
         </tr>
       </thead>
       <tbody>
         {books.map((book) => {
           return (
-            <tr key={book.id}>
+            <tr key={book.title}>
               <td>{book.title}</td>
               <td>{book.author}</td>
+              <td>{book.year}</td>
             </tr>
           );
         })}

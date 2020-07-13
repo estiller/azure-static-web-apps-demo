@@ -7,14 +7,16 @@ export default function BooksPage() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("/api/books").then((response) => {
+    const fetchData = async () => {
+      const response = await fetch("/api/books");
       setIsLoading(false);
       if (response.ok) {
-        setBooks(response.json());
+        setBooks(await response.json());
       } else {
         setError(response.status);
       }
-    });
+    };
+    fetchData();
   }, []);
 
   return isLoading ? (
