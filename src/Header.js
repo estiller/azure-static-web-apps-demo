@@ -2,7 +2,7 @@ import React from "react";
 import { Nav, Navbar } from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
 
-export default function Header({ principal }) {
+export default function Header() {
   return (
     <Navbar>
       <Navbar.Brand as={Link} to="/">
