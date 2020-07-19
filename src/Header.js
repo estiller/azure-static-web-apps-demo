@@ -18,27 +18,6 @@ export default function Header({ principal }) {
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>
-      <Navbar.Collapse className="justify-content-end">
-        {(() => {
-          switch (principal) {
-            case undefined:
-              return;
-            case null:
-              return (
-                <Nav.Link href="/.auth/login/github">
-                  Login with GitHub
-                </Nav.Link>
-              );
-            default:
-              return (
-                <>
-                  <Navbar.Text>Hi {principal.userDetails}!</Navbar.Text>
-                  <Nav.Link href="/.auth/logout">Logout</Nav.Link>
-                </>
-              );
-          }
-        })()}
-      </Navbar.Collapse>
     </Navbar>
   );
 }
