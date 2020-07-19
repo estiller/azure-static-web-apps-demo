@@ -1,4 +1,7 @@
 
+# Local Azure Functions settings (required for demo starter branch)
+api/local.settings.json
+
 # create-react-app
 build
 
