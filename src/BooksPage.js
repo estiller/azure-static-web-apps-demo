@@ -11,10 +11,17 @@ export default function BooksPage() {
       const response = await fetch("/api/books");
       setIsLoading(false);
       if (response.ok) {
-        setBooks(await response.json());
-      } else {
-        setError(response.status);
+        const contentType = response.headers.get("Content-Type");
+        if (contentType.startsWith("application/json")) {
+          setBooks(await response.json());
+          return;
+        }
+
+        setError("Invalid response type recieved");
+        return;
       }
+
+      setError(response.status);
     };
     fetchData();
   }, []);
@@ -24,6 +31,6 @@ export default function BooksPage() {
   ) : error == null ? (
     <BooksList books={books} />
   ) : (
-    <div>API error code: {error}</div>
+    <div>API error: {error}</div>
   );
 }
